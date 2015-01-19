@@ -70,7 +70,7 @@ impl Sha1 {
 
         fn left_rotate(x: u32, n: u32) -> u32 { (x << n as usize) | (x >> (32 - n) as usize) }
 
-        for i in range(16u, 80u) {
+        for i in range(16us, 80us) {
             let n = words[i - 3] ^ words[i - 8] ^ words[i - 14] ^ words[i - 16];
             words[i] = left_rotate(n, 1);
         }
@@ -81,7 +81,7 @@ impl Sha1 {
         let mut d = self.state[3];
         let mut e = self.state[4];
 
-        for i in range(0u, 80u) {
+        for i in range(0us, 80us) {
             let (f, k) = match i {
                 0 ... 19 => (ff(b, c, d), 0x5a827999),
                 20 ... 39 => (gg(b, c, d), 0x6ed9eba1),
@@ -145,7 +145,7 @@ impl Sha1 {
         let mut w = MemWriter::new();
         w.write(self.data[]);
         w.write_u8(0x80 as u8);
-        let padding = (((56 - self.len as int - 1) % 64) + 64) % 64;
+        let padding = (((56 - self.len as isize - 1) % 64) + 64) % 64;
         for _ in range(0, padding) {
             w.write_u8(0u8);
         }
