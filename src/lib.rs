@@ -68,7 +68,7 @@ impl Sha1 {
         fn hh(b: u32, c: u32, d: u32) -> u32 { (b & c) | (d & (b | c)) }
         fn ii(b: u32, c: u32, d: u32) -> u32 { b ^ c ^ d }
 
-        fn left_rotate(x: u32, n: u32) -> u32 { (x << n as uint) | (x >> (32 - n) as uint) }
+        fn left_rotate(x: u32, n: u32) -> u32 { (x << n as usize) | (x >> (32 - n) as usize) }
 
         for i in range(16u, 80u) {
             let n = words[i - 3] ^ words[i - 8] ^ words[i - 14] ^ words[i - 16];
